@@ -4,7 +4,7 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 # Getting an OAuth Client ID
 
-Here is how you get and [OAuth Client ID](https://scribehow.com/shared/How_to_create_a_new_OAuth_app_on_GitHub__UyURLzlcRVKqqHG7yGivUA)
+Here is how you get an [OAuth Client ID](https://scribehow.com/shared/How_to_create_a_new_OAuth_app_on_GitHub__UyURLzlcRVKqqHG7yGivUA)
 
 ## What's next? How do I make an app with this?
 
@@ -18,6 +18,10 @@ If you are not familiar with the different technologies used in this project, pl
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
+## DB integration
+
+To make happen your prisma shema changes to a remote DB provider you need to run this command in your terminal **(nmp/yarn/pnpm) prisma db push**
+
 ## Learn More
 
 To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
@@ -30,3 +34,7 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+# Project setup
+
+**[pnpm/yarn/npm] create t3-app@latest (your app name)**
