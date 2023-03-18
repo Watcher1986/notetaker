@@ -20,7 +20,7 @@ If you are not familiar with the different technologies used in this project, pl
 
 ## DB integration
 
-To make happen your prisma shema changes to a remote DB provider you need to run this command in your terminal **(nmp/yarn/pnpm) prisma db push**
+To make happen your prisma shema changes to a remote DB provider you need to run this command in your terminal `[nmp/yarn/pnpm] prisma db push`
 
 ## Learn More
 
@@ -37,4 +37,4 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 
 # Project setup
 
-**[pnpm/yarn/npm] create t3-app@latest (your app name)**
+`[pnpm/yarn/npm] create t3-app@latest your-app-name`
