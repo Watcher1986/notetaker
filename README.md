@@ -1,6 +1,8 @@
-# Create T3 App
+# Notetaker App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+
+Vercel deployed production [link](https://addsomenotes.vercel.app/)
 
 # Getting an OAuth Client ID
 
