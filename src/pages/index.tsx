@@ -5,6 +5,8 @@ import Head from "next/head";
 
 import { Header } from "~/components/Header";
 import { api, type RouterOutputs } from "~/utils/api";
+import { NoteEditor } from "~/components/NoteEditor";
+import { NoteCard } from "~/components/NoteCard";
 
 const Home: NextPage = () => {
   return (
@@ -40,25 +42,39 @@ const Content: React.FC = () => {
     }
   );
 
-  // const { data: notes, refetch: refetchNotes } = api.note.getAll.useQuery(
-  //   undefined,
-  //   {
-  //     enabled: sessionData?.user !== undefined,
-  //   }
-  // );
-
   const createTopic = api.topic.create.useMutation({
     onSuccess: () => {
       void refetchTopics();
     },
   });
 
+  const { data: notes, refetch: refetchNotes } = api.note.getAll.useQuery(
+    {
+      topicId: selectedTopic?.id ?? "",
+    },
+    {
+      enabled: sessionData?.user !== undefined && selectedTopic !== null,
+    }
+  );
+
+  const createNote = api.note.create.useMutation({
+    onSuccess: () => {
+      void refetchNotes();
+    },
+  });
+
+  const deleteNote = api.note.delete.useMutation({
+    onSuccess: () => {
+      void refetchNotes();
+    },
+  });
+
   return (
     <div className="mx-5 mt-5 grid h-1/3 grid-cols-4 gap-2">
-      <div className="rounded-md bg-gray-300 p-2 shadow-md">
-        <ul className="menu rounded-box w-full bg-base-100 p-2">
+      <div className="rounded-xl bg-gray-300 p-2 shadow-md">
+        <ul className="menu rounded-box w-full gap-1 bg-base-100 p-1">
           {topics?.map((topic) => (
-            <li key={topic.id}>
+            <li className="rounded-xl bg-gray-100" key={topic.id}>
               <a
                 href="#"
                 onClick={(e) => {
@@ -86,7 +102,27 @@ const Content: React.FC = () => {
           }}
         />
       </div>
-      <div className="col-span-3 rounded-md bg-gray-300 shadow-md"></div>
+      <div className="col-span-3 gap-3 rounded-xl bg-gray-300 p-2 shadow-md">
+        <div>
+          {notes?.map((note) => (
+            <div key={note.id}>
+              <NoteCard
+                note={note}
+                onDelete={() => void deleteNote.mutate({ id: note.id })}
+              />
+            </div>
+          ))}
+        </div>
+        <NoteEditor
+          onSave={({ title, content }) => {
+            void createNote.mutate({
+              title,
+              content,
+              topicId: selectedTopic?.id ?? "",
+            });
+          }}
+        />
+      </div>
     </div>
   );
 };
