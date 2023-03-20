@@ -71,10 +71,15 @@ const Content: React.FC = () => {
 
   return (
     <div className="mx-5 mt-5 grid h-1/3 grid-cols-4 gap-2">
-      <div className="rounded-xl bg-gray-300 p-2 shadow-md">
+      <div className="rounded-2xl bg-gray-300 p-2 shadow-md">
         <ul className="menu rounded-box w-full gap-1 bg-base-100 p-1">
           {topics?.map((topic) => (
-            <li className="rounded-xl bg-gray-100" key={topic.id}>
+            <li
+              className={`rounded-xl ${
+                selectedTopic?.id === topic.id ? "bg-gray-300" : "bg-gray-50"
+              }`}
+              key={topic.id}
+            >
               <a
                 href="#"
                 onClick={(e) => {
@@ -102,7 +107,7 @@ const Content: React.FC = () => {
           }}
         />
       </div>
-      <div className="col-span-3 gap-3 rounded-xl bg-gray-300 p-2 shadow-md">
+      <div className="col-span-3 gap-3 rounded-2xl bg-gray-300 p-2 shadow-md">
         <div>
           {notes?.map((note) => (
             <div key={note.id}>

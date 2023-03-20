@@ -3,6 +3,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 import { type RouterOutputs } from "~/utils/api";
+import Modal from "./Modal";
 
 type Note = RouterOutputs["note"]["getAll"][0];
 
@@ -17,28 +18,13 @@ export const NoteCard = ({
 
   return (
     <>
-      <input type="checkbox" id="my-modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="text-lg font-bold">Delete current note?</h3>
-          <p className="py-4">
-            Once you delete this note, there will be no way to restore it!
-          </p>
-          <div className="modal-action">
-            <label htmlFor="my-modal" className="btn-secondary btn-sm btn px-5">
-              Cancel
-            </label>
-            <label
-              htmlFor="my-modal"
-              className="btn-warning btn-sm btn px-5"
-              onClick={onDelete}
-            >
-              Delete
-            </label>
-          </div>
-        </div>
-      </div>
-      <div className="card mb-2 border border-gray-200 bg-base-100 shadow-xl">
+      <Modal
+        anchor="my-modal"
+        title="Delete current note?"
+        content="Once you delete this note, there will be no way to restore it!"
+        onDelete={onDelete}
+      />
+      <div className="card mb-2 border border-gray-200 bg-base-100 p-1 shadow-xl">
         <div className="card-body m-0 p-1">
           <div
             className={`collapse-arrow ${
@@ -54,11 +40,7 @@ export const NoteCard = ({
             </div>
           </div>
           <div className="card-actions mx-2 flex justify-end">
-            <label
-              htmlFor="my-modal"
-              className="btn-warning btn-xs btn px-5"
-              // onClick={onDelete}
-            >
+            <label htmlFor="my-modal" className="btn-warning btn-xs btn px-5">
               Delete
             </label>
           </div>

@@ -14,16 +14,15 @@ export const NoteEditor = ({
 
   return (
     <div className="card border border-gray-200 bg-base-100 shadow-xl ">
-      <div className="card-body gap-3">
-        <h2 className="card-title">
-          <input
-            type="text"
-            placeholder="Note title"
-            className="input-primary input input-md w-full font-bold"
-            value={title}
-            onChange={(e) => setTitle(e.currentTarget.value)}
-          />
-        </h2>
+      <div className="card-body gap-3 p-4">
+        <h2 className="card-title">Add new note</h2>
+        <input
+          type="text"
+          placeholder="Note title"
+          className="input-primary input input-md w-full font-bold"
+          value={title}
+          onChange={(e) => setTitle(e.currentTarget.value)}
+        />
         <CodeMirror
           value={code}
           width="500px"
@@ -37,7 +36,7 @@ export const NoteEditor = ({
           className="border border-gray-300"
         />
       </div>
-      <div className="card-actions justify-end p-8">
+      <div className="card-actions justify-end p-4">
         <button
           onClick={() => {
             onSave({
